@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace Kata;
 
-enum ResultRockPaperScissors {
+enum ResultRockPaperScissors
+{
     case PLAYER_1_WINS;
     case PLAYER_2_WINS;
     case DRAW;
