@@ -21,20 +21,12 @@ class RockPaperScissors
      */
     public function play(string $movePlayer1, string $movePlayer2): string
     {
+        if ($movePlayer1 === $movePlayer2) {
+            return 'draw';
+        }
+
         if (in_array([$movePlayer1, $movePlayer2], self::VICTORY_CONDITIONS, true)) {
             return 'player1 wins';
-        }
-
-        if ($movePlayer1 === self::MOVE_ROCK && $movePlayer2 === self::MOVE_ROCK) {
-            return 'draw';
-        }
-
-        if ($movePlayer1 === self::MOVE_SCISSORS && $movePlayer2 === self::MOVE_SCISSORS) {
-            return 'draw';
-        }
-
-        if ($movePlayer1 === self::MOVE_PAPER && $movePlayer2 === self::MOVE_PAPER) {
-            return 'draw';
         }
 
         return 'player2 wins';
