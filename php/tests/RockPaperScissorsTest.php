@@ -8,84 +8,29 @@ use PHPUnit\Framework\TestCase;
 
 class RockPaperScissorsTest extends TestCase
 {
-    public function test_player1_rock_should_beat_player2_scissors(): void
+    /** @dataProvider  game_provider */
+    public function test_game(string $movePlayer1, string $movePlayer2, ResultRockPaperScissors $expectedResult): void
     {
         $rockPaperScissors = new RockPaperScissors();
 
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_SCISSORS);
+        $result = $rockPaperScissors->play($movePlayer1, $movePlayer2);
 
-        self::assertSame(ResultRockPaperScissors::PLAYER_1_WINS, $result);
+        self::assertSame($expectedResult, $result);
+
     }
 
-    public function test_player2_rock_should_beat_player1_scissors(): void
+    public function game_provider(): array
     {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_SCISSORS, RockPaperScissors::MOVE_ROCK);
-
-        self::assertSame(ResultRockPaperScissors::PLAYER_2_WINS, $result);
-    }
-
-    public function test_player1_paper_should_beat_player2_rock(): void
-    {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_ROCK);
-
-        self::assertSame(ResultRockPaperScissors::PLAYER_1_WINS, $result);
-    }
-
-    public function test_player2_paper_should_beat_player1_rock(): void
-    {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_PAPER);
-
-        self::assertSame(ResultRockPaperScissors::PLAYER_2_WINS, $result);
-    }
-
-    public function test_player1_scissor_should_beat_player2_paper(): void
-    {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_SCISSORS, RockPaperScissors::MOVE_PAPER);
-
-        self::assertSame(ResultRockPaperScissors::PLAYER_1_WINS, $result);
-    }
-
-    public function test_player2_scissor_should_beat_player1_paper(): void
-    {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_SCISSORS);
-
-        self::assertSame(ResultRockPaperScissors::PLAYER_2_WINS, $result);
-    }
-
-    public function test_player1_rock_should_draw_player2_rock(): void
-    {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_ROCK);
-
-        self::assertSame(ResultRockPaperScissors::DRAW, $result);
-    }
-
-    public function test_player1_scissors_should_draw_player2_scissors(): void
-    {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_SCISSORS, RockPaperScissors::MOVE_SCISSORS);
-
-        self::assertSame(ResultRockPaperScissors::DRAW, $result);
-    }
-
-    public function test_player1_paper_should_draw_player2_paper(): void
-    {
-        $rockPaperScissors = new RockPaperScissors();
-
-        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_PAPER);
-
-        self::assertSame(ResultRockPaperScissors::DRAW, $result);
+        return [
+            'test_player1_rock_should_beat_player2_scissors' => [RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_SCISSORS, ResultRockPaperScissors::PLAYER_1_WINS],
+            'test_player2_rock_should_beat_player1_scissors' => [RockPaperScissors::MOVE_SCISSORS, RockPaperScissors::MOVE_ROCK, ResultRockPaperScissors::PLAYER_2_WINS],
+            'test_player1_paper_should_beat_player2_rock' => [RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_ROCK, ResultRockPaperScissors::PLAYER_1_WINS],
+            'test_player2_paper_should_beat_player1_rock' => [RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_PAPER, ResultRockPaperScissors::PLAYER_2_WINS],
+            'test_player1_scissor_should_beat_player2_paper' => [RockPaperScissors::MOVE_SCISSORS, RockPaperScissors::MOVE_PAPER, ResultRockPaperScissors::PLAYER_1_WINS],
+            'test_player2_scissor_should_beat_player1_paper' => [RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_SCISSORS, ResultRockPaperScissors::PLAYER_2_WINS],
+            'test_player1_rock_should_draw_player2_rock' => [RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_ROCK, ResultRockPaperScissors::DRAW],
+            'test_player1_scissors_should_draw_player2_scissors' => [RockPaperScissors::MOVE_SCISSORS, RockPaperScissors::MOVE_SCISSORS, ResultRockPaperScissors::DRAW],
+            'test_player1_paper_should_draw_player2_paper' => [RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_PAPER, ResultRockPaperScissors::DRAW],
+        ];
     }
 }
