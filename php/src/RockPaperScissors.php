@@ -25,6 +25,10 @@ class RockPaperScissors
             return 'player1 wins';
         }
 
+        if ($movePlayer1 === self::MOVE_ROCK && $movePlayer2 === self::MOVE_ROCK) {
+            return 'draw';
+        }
+
         return 'player2 wins';
     }
 }
