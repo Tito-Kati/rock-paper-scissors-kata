@@ -6,6 +6,10 @@ class RockPaperScissors
 {
     public function play(string $movePlayer1, string $movePlayer2): string
     {
+        if ($movePlayer1 === 'paper') {
+            return 'player1 wins';
+        }
+
         if ($movePlayer2 === 'rock') {
             return 'player2 wins';
         }
