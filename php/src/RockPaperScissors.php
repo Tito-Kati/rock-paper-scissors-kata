@@ -14,6 +14,11 @@ class RockPaperScissors
         [self::MOVE_PAPER, self::MOVE_ROCK],
     ];
 
+    /**
+     * @param self::MOVE_* $movePlayer1
+     * @param self::MOVE_* $movePlayer2
+     * @return string
+     */
     public function play(string $movePlayer1, string $movePlayer2): string
     {
         if (in_array([$movePlayer1, $movePlayer2], self::VICTORY_CONDITIONS, true)) {
