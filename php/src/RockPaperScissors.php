@@ -9,6 +9,10 @@ class RockPaperScissors
     const MOVE_SCISSORS = 'scissors';
     public function play(string $movePlayer1, string $movePlayer2): string
     {
+        if ($movePlayer1 === self::MOVE_SCISSORS && $movePlayer2 === self::MOVE_PAPER) {
+            return 'player1 wins';
+        }
+
         if ($movePlayer2 === self::MOVE_PAPER) {
             return 'player2 wins';
         }
