@@ -4,31 +4,22 @@ namespace Kata;
 
 class RockPaperScissors
 {
-    const MOVE_PAPER = 'paper';
-    const MOVE_ROCK = 'rock';
-    const MOVE_SCISSORS = 'scissors';
+    public const MOVE_PAPER = 'paper';
+    public const MOVE_ROCK = 'rock';
+    public const MOVE_SCISSORS = 'scissors';
+
+    public const VICTORY_CONDITIONS = [
+        [self::MOVE_ROCK, self::MOVE_SCISSORS],
+        [self::MOVE_SCISSORS, self::MOVE_PAPER],
+        [self::MOVE_PAPER, self::MOVE_ROCK],
+    ];
+
     public function play(string $movePlayer1, string $movePlayer2): string
     {
-        if ($movePlayer2 === self::MOVE_SCISSORS && $movePlayer1 === self::MOVE_PAPER) {
-            return 'player2 wins';
-        }
-
-        if ($movePlayer1 === self::MOVE_SCISSORS && $movePlayer2 === self::MOVE_PAPER) {
+        if (in_array([$movePlayer1, $movePlayer2], self::VICTORY_CONDITIONS, true)) {
             return 'player1 wins';
         }
 
-        if ($movePlayer2 === self::MOVE_PAPER) {
-            return 'player2 wins';
-        }
-
-        if ($movePlayer1 === self::MOVE_PAPER) {
-            return 'player1 wins';
-        }
-
-        if ($movePlayer2 === self::MOVE_ROCK) {
-            return 'player2 wins';
-        }
-
-        return 'player1 wins';
+        return 'player2 wins';
     }
 }
