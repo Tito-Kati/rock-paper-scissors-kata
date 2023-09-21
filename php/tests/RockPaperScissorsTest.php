@@ -51,4 +51,13 @@ class RockPaperScissorsTest extends TestCase
 
         self::assertSame('player1 wins', $result);
     }
+
+    public function test_player2_scissor_should_beat_player1_paper(): void
+    {
+        $rockPaperScissors = new RockPaperScissors();
+
+        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_SCISSORS);
+
+        self::assertSame('player2 wins', $result);
+    }
 }
