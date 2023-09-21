@@ -11,7 +11,7 @@ class RockPaperScissorsTest extends TestCase
     {
         $rockPaperScissors = new RockPaperScissors();
 
-        $result = $rockPaperScissors->play('rock', 'scissors');
+        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_SCISSORS);
 
         self::assertSame('player1 wins', $result);
     }
@@ -20,7 +20,7 @@ class RockPaperScissorsTest extends TestCase
     {
         $rockPaperScissors = new RockPaperScissors();
 
-        $result = $rockPaperScissors->play('scissors', 'rock');
+        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_SCISSORS, RockPaperScissors::MOVE_ROCK);
 
         self::assertSame('player2 wins', $result);
     }
@@ -29,7 +29,7 @@ class RockPaperScissorsTest extends TestCase
     {
         $rockPaperScissors = new RockPaperScissors();
 
-        $result = $rockPaperScissors->play('paper', 'rock');
+        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_PAPER, RockPaperScissors::MOVE_ROCK);
 
         self::assertSame('player1 wins', $result);
     }
@@ -38,7 +38,7 @@ class RockPaperScissorsTest extends TestCase
     {
         $rockPaperScissors = new RockPaperScissors();
 
-        $result = $rockPaperScissors->play('rock', 'paper');
+        $result = $rockPaperScissors->play(RockPaperScissors::MOVE_ROCK, RockPaperScissors::MOVE_PAPER);
 
         self::assertSame('player2 wins', $result);
     }
